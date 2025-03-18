@@ -7,27 +7,24 @@
 #include "shell.h"
 
 #include "mutex.h"
+/* Add lps331ap related include here */
 #include "lpsxxx.h"
 #include "lpsxxx_params.h"
+/* Add lsm303dlhc related include here */
 #include "lsm303dlhc.h"
 #include "lsm303dlhc_params.h"
+// Add isl related include here 
 #include "isl29020.h"
 #include "isl29020-internal.h"
 #include "isl29020_params.h"
+// Add l3g4200d related include here 
 #include "l3g4200d.h"
 #include "l3g4200d-regs.h"
 #include "l3g4200d_params.h"
 static volatile int l3g_running = 0; // Indicateur pour arrêter proprement le thread
 
 
-/* Add lps331ap related include here */
-
-
-/* Add lsm303dlhc related include here */
-
-
 /* Declare the lps331ap device variable here */
-
 static lpsxxx_t lpsxxx;
 /* Declare the lsm303dlhc device variable here */
 static lsm303dlhc_t lsm303dlhc;
@@ -37,7 +34,9 @@ static lsm303dlhc_t lsm303dlhc;
 static mutex_t lsm_lock = MUTEX_INIT_LOCKED;
 /* stack memory allocated for the lsm303dlhc thread */
 static char lsm303dlhc_stack[THREAD_STACKSIZE_MAIN];
+/* Declare the l3g4200d device variable here */
 static l3g4200d_t l3g4200d;
+/* Declare the isl29020 device variable here */
 static isl29020_t isl29020;
 
 static mutex_t l3g_lock = MUTEX_INIT_LOCKED;
